@@ -1,0 +1,20 @@
+{
+  "fulfillmentMessages": [
+    {
+      "text": {
+        "text": [
+          "Text response from webhook"
+        ]
+      }
+    }
+  ],
+  "outputContexts": [
+    {
+      "name": "projects/project-id/agent/sessions/session-id/contexts/context-name",
+      "lifespanCount": 5,
+      "parameters": {
+        "param-name": "param-value"
+      }
+    }
+  ]
+}

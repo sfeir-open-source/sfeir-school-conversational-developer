@@ -39,6 +39,8 @@ Workshops are in directory `steps` :
   * one with a README.md with workshop steps and source file to complete
   * a second directory suffixed with `-solution` which contains source file with solutions.
 
+To launch you code, use script `npm run watch -- --source=<step dir>`
+
 ## Contributing
 
 ### Contributing Guidelines
