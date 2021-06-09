@@ -1,6 +1,6 @@
 {
   "name": "conversational-developper",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,13 +8,15 @@
     "tunnel": "ngrok http 8080"
   },
   "keywords": [],
-  "author": [
+  "authors": [
     "Fabien Bonalair <bonalair.f@sfeir.com>"
   ],
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "dialogflow": "^1.2.0"
+    "axios": "^0.21.1",
+    "@google-cloud/dialogflow": "^3.5.0",
+    "wikijs": "^6.2.1"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.8.0",

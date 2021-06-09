@@ -1,0 +1,9 @@
+// Definition credit to brewwiki.com
+
+const definitions = new Map([
+  ["SRM", "The Standard Reference Method, abbreviated as SRM is the color system used by brewers to specify finished beer and malt color. In the case of malt it is actually the SRM color of a laboratory wort made from the malt which is printed on the package. The SRM value is 12.7 times the log of the attenuation experienced by light of wavelength 430 nanometers (deep blue) in passing through 1 cm of the beer (or wort). The scaling factor (12.7) and path were chosen (1951) to make SRM values correspond closely to values measured in the Lovibond system which was in use at the time. The two systems are approximately equivalent for home brewing applications. SRM is also sometimes referred to Standard Research Method by some books but this is incorrect."],
+  ["ABV", "Alcohol By Volume (ABV) is a measure of the percentage of alcohol volume over the total volume of the beer. This is equivalent to the proof value of higher alcohol liquors. Beer typically has an alcohol by volume value of between 3 and 8%. Barley wine may have an ABV as high as 10% or more. Note that while the majority of the world typically quotes alcohol by volume, in the US alcohol percentage is often measured as Alcohol By Weight."],
+  ["Yeast", "Yeast is a living single-cell fungi used in the production of beer. Yeast is added to sweet wort after cooling to initiate the fermentation process. During fermentation, yeast cells convert simple sugars such as glucose into carbon dioxide and alcohol. Fermentation can take anywhere from a few days to several weeks to complete. The type of yeast and particular strain of yeast used can have a large impact on the flavor and aroma of your beer. When possible, it is best to choose a yeast strain that is appropriate for the style of beer you are brewing. "],
+]);
+
+module.exports = definitions
