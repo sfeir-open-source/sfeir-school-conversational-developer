@@ -13,7 +13,9 @@ exports.myDialogflowFulfillment = async (req, res) => {
   switch (intentName) {
     case 'LookingForABeer':
       const beerName = req.body.queryResult.parameters.beerName;
+      const [, projectId, , , , , sessionId] = req.body.session.split('/');
       const beerAnswer = [];
+      const outputContexts = [];
       const apiResult = await fetchBeerFromApi(beerName);
       if (!beerName) {
         console.info('Looking For a beer intent without a beer name');
@@ -21,12 +23,17 @@ exports.myDialogflowFulfillment = async (req, res) => {
       } else if (apiResult.data.nhits < 1) {
         console.info('Looking For a beer intent without results');
         beerAnswer.push('Sorry I don\'t know this beer. Can you tell me more about it?');
+        outputContexts.push({
+          name: `projects/${projectId}/agent/sessions/${sessionId}/contexts/${'newBeer'}`,
+          lifespanCount: 3,
+          parameters: { beerName }
+        });
       } else {
         const { name, country, name_breweries } = apiResult.data.records[0].fields;
         beerAnswer.push(`Yes I know ${name}, it's a beer from ${country} made by ${name_breweries}.`);
         beerAnswer.push('What else can I do for you?');
       }
-      answer = { 'fulfillmentMessages': [{ 'text': { 'text': beerAnswer } }] };
+      answer = { 'fulfillmentMessages': [{ 'text': { 'text': beerAnswer } }], outputContexts };
       break;
 
     case '_GlossaryDefinition':
