@@ -47,45 +47,27 @@ exports.myDialogflowFulfillment = async (req, res) => {
   switch (intentName) {
     case '_WelcomeIntent':
       answer = {
-        "fulfillmentMessages": [
+        'fulfillmentMessages': [
           {
-            "text": {
-              "text": [
-                "From fulfillment with love"
+            'text': {
+              'text': [
+                'Hello! I am Zytha a beer enthousiaste.',
+                'How can I help you?'
               ]
             }
           },
           {
-            "text": {
-              "text": [
-                "How can I help you?"
-              ]
-            }
-          },
-          {
-            "payload": {
-              "richContent": [
+            'payload': {
+              'richContent': [
                 [
                   {
-                    "accessibilityText": "Dialogflow across platforms",
-                    "type": "image"
-                  },
-                  {
-                    "title": "Dialogflow",
-                    "actionLink": "https://cloud.google.com/dialogflow/docs",
-                    "type": "info",
-                    "subtitle": "Build natural and rich conversational experiences"
-                  },
-                  {
-                    "type": "chips",
-                    "options": [
+                    'type': 'chips',
+                    'options': [
                       {
-                        "text": "Case Studies",
-                        "link": "https://cloud.google.com/dialogflow/case-studies"
+                        'text': 'Who are your maker?'
                       },
                       {
-                        "link": "https://cloud.google.com/dialogflow/docs",
-                        "text": "Docs"
+                        'text': 'Can you look for a beer for me?'
                       }
                     ]
                   }
