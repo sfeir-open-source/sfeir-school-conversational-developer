@@ -1,20 +1,4 @@
-# About
-
-Template repository for SFEIR School, this template could be use to start a school with revealJS and SFEIR School theme
-
-Don't forget to replace all xxx by your techno
-
-## Files to changes
-
-- `docs/scss/slides.scss` you could put here all your custom styles
-- `docs/scripts/slides.js` you will reference all the markdown here. Don't forget to have 1 function per chapter (module).
-- `docs/index.html` you should reference the correct technology in header
-
-# Content of README
-
-The text below is the template you could use for your readme
-
-# SFEIR School XXX
+# SFEIR School Conversational developer
 
 <p align="center">
  <img style="display:block" width="20%" height="20%" src="./docs/assets/images/sfeir-school-logo.png" alt="SFEIR School logo">
@@ -24,22 +8,27 @@ The text below is the template you could use for your readme
 
 [Discover the SFEIR Schools](https://www.sfeir.com/fr/contenus-dexperts/sfeir-school)
 
+[Register to Sfeir Chatbot session](https://www.sfeir.com/fr/sfeir-school-chatbot-2/)
+
 # Slides
 
-You can view the slides [here](https://sfeir-open-source.github.io/sfeir-school-xxx/).
+You can view the slides [here](https://docs.google.com/presentation/d/1XvF2jaF0t36Dxg9_KWxu2BVtjxdH0clLmkMqrVxrgtY/edit?usp=sharing).   
+The reveal open format is a [work in progress](https://sfeir-open-source.github.io/sfeir-school-conversational-developer/).
+
+## Workshop
+
+Workshops are in directory `steps`. You should first cd into it and run `npm install`.
+In `package.json` you will found some script to help you work.   
+You will find two directories per workshop :
+  * a basic directory with boilerplate for the exercice, README with exercice todo and tips 
+  * a second directory suffixed with `-solution` which contains source file with solutions and explanation in README.
+
+To launch your code, use script `npm run watch -- --source=<step dir>`
+
 
 ## Develop
 
 To run docs locally, go in directory `docs` and run `npx serve` of if you don't have node, you can use docker `docker-compose up`, and open slides on http://localhost:5000/.
-
-## Workshop
-
-Workshops are in directory `steps` : 
-* two directories per workshop :
-  * one with a README.md with workshop steps and source file to complete
-  * a second directory suffixed with `-solution` which contains source file with solutions.
-
-To launch you code, use script `npm run watch -- --source=<step dir>`
 
 ## Contributing
 
