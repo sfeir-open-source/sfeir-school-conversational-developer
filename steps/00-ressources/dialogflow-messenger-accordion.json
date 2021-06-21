@@ -1,17 +1,23 @@
 {
-  "richContent": [
-    [
-      {
-        "type": "accordion",
-        "title": "Accordion title",
-        "subtitle": "Accordion subtitle",
-        "image": {
-          "src": {
-            "rawUrl": "https://example.com/images/logo.png"
-          }
-        },
-        "text": "Accordion text"
+  "fulfillmentMessages": [
+    {
+      "payload": {
+        "richContent": [
+          [
+            {
+              "type": "accordion",
+              "title": "Accordion title",
+              "subtitle": "Accordion subtitle",
+              "image": {
+                "src": {
+                  "rawUrl": "https://example.com/images/logo.png"
+                }
+              },
+              "text": "Accordion text"
+            }
+          ]
+        ]
       }
-    ]
+    }
   ]
 }

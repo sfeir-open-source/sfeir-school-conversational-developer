@@ -3,82 +3,14 @@ const authors = require('../package.json').authors.join(',');
 const wiki = require('wikijs').default;
 const axios = require('axios').default;
 
-const { AGENT_ID, CHAT_TITLE } = process.env;
-
-// Backend server
-// For simplicity sake is integrated but can (should) be another service
-const http = require('http');
-const html = `<!DOCTYPE html>
-  <html lang='en'>
-  <head>
-    <meta charset='UTF-8' name='viewport' content='width-device-width, initial-scale=1'>
-    <title>Dialogflow messenger demo</title>
-  </head>
-  <body>
-
-    <script src='https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1'></script>
-    <df-messenger
-      intent='WELCOME'
-      chat-title='${CHAT_TITLE}'
-      agent-id='${AGENT_ID}'
-      language-code='en',
-      expand='true'
-    ></df-messenger>
-  </body>
-  </html>
-`;
-const requestListener = function(req, res) {
-  res.writeHead(200);
-  res.end(html);
-};
-const server = http.createServer(requestListener)
-  .listen(3000);
-console.log('Server backend listening on port 3000');
-// End Backend server
-
-// Fulfillment
 const BOT_AGE = process.env.BOT_AGE || new Date(2020, 10, 27);
 
 exports.myDialogflowFulfillment = async (req, res) => {
-  // console.log('My request body:', JSON.stringify(req.body, null, 2));
+  console.log('My request body:', JSON.stringify(req.body, null, 2));
   const intentName = req.body.queryResult.intent.displayName;
 
   let answer;
   switch (intentName) {
-    case '_WelcomeIntent':
-      answer = {
-        'fulfillmentMessages': [
-          {
-            'text': {
-              'text': [
-                'Hello! I am Zytha a beer enthousiaste.',
-                'How can I help you?'
-              ]
-            }
-          },
-          {
-            'payload': {
-              'richContent': [
-                [
-                  {
-                    'type': 'chips',
-                    'options': [
-                      {
-                        'text': 'Who are your maker?'
-                      },
-                      {
-                        'text': 'Can you look for a beer for me?'
-                      }
-                    ]
-                  }
-                ]
-              ]
-            }
-          }
-        ]
-      };
-
-      break;
     case 'LookingForABeer':
       const beerName = req.body.queryResult.parameters.beerName;
       const [, projectId, , , , , sessionId] = req.body.session.split('/');
@@ -147,7 +79,6 @@ exports.myDialogflowFulfillment = async (req, res) => {
       break;
 
   }
-  console.log('My answer:', JSON.stringify(answer, null, 2));
   res.send(answer);
 };
 

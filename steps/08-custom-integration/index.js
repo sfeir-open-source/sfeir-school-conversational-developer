@@ -6,7 +6,7 @@ const axios = require('axios').default;
 const { AGENT_ID, CHAT_TITLE } = process.env;
 
 // Backend server
-// For simplicity sake is integrated but can (should) be another service
+// For simplicity sake is integrated but can (should?) be another service
 const http = require('http');
 const html = `<!DOCTYPE html>
   <html lang='en'>
@@ -19,7 +19,7 @@ const html = `<!DOCTYPE html>
     <script src='https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1'></script>
     <df-messenger
       intent='WELCOME'
-      chat-title='${CHAT_TITLE}'
+      chat-title='Agent Zita'
       agent-id='${AGENT_ID}'
       language-code='en',
       expand='true'
@@ -40,7 +40,7 @@ console.log('Server backend listening on port 3000');
 const BOT_AGE = process.env.BOT_AGE || new Date(2020, 10, 27);
 
 exports.myDialogflowFulfillment = async (req, res) => {
-  // console.log('My request body:', JSON.stringify(req.body, null, 2));
+  console.log('My request body:', JSON.stringify(req.body, null, 2));
   const intentName = req.body.queryResult.intent.displayName;
 
   let answer;
@@ -49,135 +49,40 @@ exports.myDialogflowFulfillment = async (req, res) => {
       answer = {
         'fulfillmentMessages': [
           {
-            'payload': {
-              'payload': {
-                'richContent': [
-                  [
-                    {
-                      'type': 'image',
-                      'accessibilityText': 'Dialogflow across platforms'
-                    },
-                    {
-                      'subtitle': 'Build natural and rich conversational experiences',
-                      'type': 'info',
-                      'actionLink': 'https://cloud.google.com/dialogflow/docs',
-                      'title': 'Dialogflow'
-                    },
-                    {
-                      'options': [
-                        {
-                          'link': 'https://cloud.google.com/dialogflow/case-studies',
-                          'text': 'Case Studies'
-                        },
-                        {
-                          'text': 'Docs',
-                          'link': 'https://cloud.google.com/dialogflow/docs'
-                        }
-                      ],
-                      'type': 'chips'
-                    }
-                  ]
-                ]
-              }
-            }
-          },
-          {
-            'payload': {
-              'richContent': [
-                [
-                  {
-                    'type': 'image',
-                    'rawUrl': 'https://example.com/images/logo.png',
-                    'accessibilityText': 'Dialogflow across platforms'
-                  },
-                  {
-                    'subtitle': 'Build natural and rich conversational experiences',
-                    'title': 'Dialogflow',
-                    'actionLink': 'https://cloud.google.com/dialogflow/docs',
-                    'type': 'info'
-                  },
-                  {
-                    'options': [
-                      {
-                        'link': 'https://cloud.google.com/dialogflow/case-studies',
-                        'text': 'Case Studies'
-                      },
-                      {
-                        'text': 'Docs',
-                        'link': 'https://cloud.google.com/dialogflow/docs'
-                      }
-                    ],
-                    'type': 'chips'
-                  }
-                ]
-              ]
-            }
-          }, { 'text': { 'text': ['Hello! My name is Zytha. I can help you to know more about beer.', 'What do you want to discover today?'] } }],
-        'fulfillmentMessages': []
-
-        /*
-        'richContent': [
-          [
-            {
-              'type': 'chips',
-              'options': [
-                {
-                  'text': 'Chip 1'
-                },
-                {
-                  'text': 'Chip 2'
-                }
-              ]
-            }
-          ]
-        ]
-         */
-
-
-        /*
-        'richContent': [
-          [
-            {
-              'type': 'chips',
-              'options': [
-                {
-                  'text': 'Can you define a word?',
-                  'image': {
-                    'src': {
-                      'rawUrl': 'https://example.com/images/logo.png'
-                    }
-                  }
-                },
-                {
-                  'text': 'I am looking for a beer',
-                  'image': {
-                    'src': {
-                      'rawUrl': 'https://icons-for-free.com/download-icon-beer-131994967629447645_32.png'
-                    }
-                  }
-                }
-              ]
-            }
-          ]
-        ]*/
-      };
-      answer = {
-        'fulfillmentMessages': [
-          {
-            'card': {
-              'title': 'card title',
-              'subtitle': 'card text',
-              'imageUri': 'https://example.com/images/example.png',
-              'buttons': [
-                {
-                  'text': 'button text',
-                  'postback': 'https://example.com/path/for/end-user/to/follow'
-                }
+            'text': {
+              'text': [
+                'Hello! I am Zytha a beer enthousiaste.',
+                'How can I help you?'
               ]
             }
           }
         ]
       };
+
+      if (req.body.originalDetectIntentRequest.source != 'DIALOGFLOW_CONSOLE'
+        && req.body.session.includes("dfMessenger")) {
+        console.log("Message form Dialogflow Messenger platform")
+        const suggestionChips = {
+          'payload': {
+            'richContent': [
+              [
+                {
+                  'type': 'chips',
+                  'options': [
+                    {
+                      'text': 'Who are your maker?'
+                    },
+                    {
+                      'text': 'Can you look for a beer for me?'
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        };
+        answer.fulfillmentMessages.push(suggestionChips);
+      }
 
       break;
     case 'LookingForABeer':
@@ -248,7 +153,6 @@ exports.myDialogflowFulfillment = async (req, res) => {
       break;
 
   }
-  console.log('My answer:', JSON.stringify(answer, null, 2));
   res.send(answer);
 };
 
