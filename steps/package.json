@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon --inspect=5860 -r dotenv/config node_modules/@google-cloud/functions-framework --target=myDialogflowFulfillment",
-    "tunnel": "ngrok http 8080"
+    "tunnel": "ngrok http 8080",
+    "client": "node -r dotenv/config 08-custom-integration-solution/client.js"
   },
   "keywords": [],
   "authors": [
@@ -14,8 +15,9 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
     "@google-cloud/dialogflow": "^3.5.0",
+    "axios": "^0.21.1",
+    "uuid": "^8.3.2",
     "wikijs": "^6.2.1"
   },
   "devDependencies": {
