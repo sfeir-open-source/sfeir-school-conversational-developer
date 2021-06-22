@@ -1,9 +1,11 @@
 # To Do
 
-A simple ping pong between Dialogflow and our local serveur.
+Let's use Javascript to calcul bot age since it's first usage: 27 november 2020  
 
 # Tips
+Lost connection? Debug using intent `_ping`.
 
+Reminder of intent activation:
 - Launch Ngrok and local serveur
 - Activate fulfillment in Dialogflow interface Dialogflow
 - Connect Dialogflow to local serveur
