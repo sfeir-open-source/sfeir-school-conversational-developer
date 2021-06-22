@@ -3,7 +3,7 @@ const authors = require('../package.json').authors.join(',');
 const wiki = require('wikijs').default;
 const axios = require('axios').default;
 
-const { AGENT_ID, CHAT_TITLE } = process.env;
+const { AGENT_ID } = process.env;
 
 // Backend server
 // For simplicity sake is integrated but can (should?) be another service

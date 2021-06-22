@@ -42,7 +42,7 @@ Want to file a bug, contribute some code, or improve documentation? Excellent! R
 
 ### Code of Conduct
 
-Help us keep Angular open and inclusive. Please read and follow our [Code of Conduct][codeofconduct].
+Help us be open and inclusive. Please read and follow our [Code of Conduct][codeofconduct].
 
 [contributing]: CONTRIBUTING.md
 [codeofconduct]: https://github.com/sfeir-open-source/code-of-conduct/blob/master/CODE_OF_CONDUCT.md
